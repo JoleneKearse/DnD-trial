@@ -1,18 +1,22 @@
 import { useState, useRef } from 'react'
 
 function App() {
+  const [list, setList] = useState(['Gracie', 'Stella', 'Elvira', 'Emily']);
+  // grab dragging references
   const dragItem = useRef();
   const dragOverItem = useRef();
-  const [list, setList] = useState(['Gracie', 'Stella', 'Elvira', 'Emily']);
 
+  // get position of dragged item
   const dragStart = (e, position) => {
     dragItem.current = position;
   }
 
+  // get position of new order
   const dragEnter = (e, position) => {
     dragOverItem.current = position;
   }
 
+  // change overall list order
   const drop = (e) => {
     const copyListItems = [...list];
     const dragItemContent = copyListItems[dragItem.current];
